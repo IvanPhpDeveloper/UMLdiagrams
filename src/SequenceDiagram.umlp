@@ -1,0 +1,40 @@
+@startuml
+
+
+Actor UnregisterUSER
+
+
+UnregisterUSER->InstagramServer:Registration in Instagram
+UnregisterUSER->InstagramServer:Create login
+InstagramServer->DataBase:add login in Data
+InstagramServer<--DataBase:Success creating
+UnregisterUSER->InstagramServer:create password
+InstagramServer->DataBase:add password in Data
+InstagramServer<--DataBase:Success creating
+UnregisterUSER<--InstagramServer:Account success creating
+UnregisterUSER->InstagramServer:Sing in
+UnregisterUSER->InstagramServer:Enter a login
+InstagramServer->DataBase:Сheck login request
+DataBase->DataBase:Сheck login
+InstagramServer<--DataBase:Login entered incorrectly
+UnregisterUSER<--InstagramServer:Login is incorrect.Enter correct login
+InstagramServer<--DataBase:Login entered correctly
+UnregisterUSER<--InstagramServer:Login is correct
+UnregisterUSER->InstagramServer:Enter a password
+InstagramServer->DataBase:Сheck password request
+DataBase->DataBase:Сheck password
+InstagramServer<--DataBase:password entered incorrectly
+UnregisterUSER<--InstagramServer:password is incorrect.Enter correct login
+InstagramServer<--DataBase:password entered correctly
+UnregisterUSER<--InstagramServer:password is correct
+
+
+
+actor USER
+InstagramServer->USER:Welcome to social NETWORK
+
+
+
+
+
+@enduml
